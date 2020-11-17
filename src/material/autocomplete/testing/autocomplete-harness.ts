@@ -29,8 +29,9 @@ export class MatAutocompleteHarness extends ComponentHarness {
    * @param options Options for filtering which autocomplete instances are considered a match.
    * @return a `HarnessPredicate` configured with the given options.
    */
-  static with(options: AutocompleteHarnessFilters = {}): HarnessPredicate<MatAutocompleteHarness> {
-    return new HarnessPredicate(MatAutocompleteHarness, options)
+  static with(options: AutocompleteHarnessFilters = {}, harnessClass = MatAutocompleteHarness):
+    HarnessPredicate<MatAutocompleteHarness> {
+    return new HarnessPredicate(harnessClass, options)
         .addOption('value', options.value,
             (harness, value) => HarnessPredicate.stringMatches(harness.getValue(), value));
   }
